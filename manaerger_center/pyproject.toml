@@ -1,0 +1,61 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "manaerger-center"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "jay_huang", email = "jay_huang@paradise-soft.com.tw" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = []
+
+[project.urls]
+Documentation = "https://github.com/jay_huang/manaerger-center#readme"
+Issues = "https://github.com/jay_huang/manaerger-center/issues"
+Source = "https://github.com/jay_huang/manaerger-center"
+
+[tool.hatch.version]
+path = "src/manaerger_center/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/manaerger_center tests}"
+
+[tool.coverage.run]
+source_pkgs = ["manaerger_center", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/manaerger_center/__about__.py",
+]
+
+[tool.coverage.paths]
+manaerger_center = ["src/manaerger_center", "*/manaerger-center/src/manaerger_center"]
+tests = ["tests", "*/manaerger-center/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
