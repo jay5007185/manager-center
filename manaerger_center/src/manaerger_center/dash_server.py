@@ -2,8 +2,8 @@
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import JSONResponse, RedirectResponse
 from fastapi.middleware.wsgi import WSGIMiddleware
-from . import login_page as login_page
-from . import http_exception_403, http_exception_404
+import login_page as login_page
+import http_exception_403, http_exception_404
 from datetime import datetime
 
 
@@ -80,7 +80,7 @@ app.mount("/404-NotFound/", WSGIMiddleware(http_exception_404.app.server))
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("dash_server:app", host='0.0.0.0', port=server_port, reload=True)
+    uvicorn.run("dash_server:app", host='0.0.0.0', port=server_port, reload=True,)
 
 
 # %%
